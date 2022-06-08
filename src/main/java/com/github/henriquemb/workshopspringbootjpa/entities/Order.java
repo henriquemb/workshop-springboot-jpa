@@ -89,6 +89,18 @@ public class Order implements Serializable {
         return items;
     }
 
+    public Double getTotal() {
+        /*
+         * double total = 0;
+         * for (OrderItem i : items) {
+         *     total += i.getSubTotal();
+         * }
+         * return total;
+         */
+
+        return items.stream().mapToDouble(OrderItem::getSubTotal).sum();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
